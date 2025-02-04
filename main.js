@@ -1,18 +1,3 @@
-import readline from 'readline';
-
-async function input(message) {
-
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    
-    const res = await new Promise(resolve => rl.question(message, resolve));
-    rl.close();
-    
-    return  res
-}
-
 async function getGamePrice(appid) {
     const response = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appid}`,
         {   method: 'GET'
@@ -90,7 +75,7 @@ let appid_list;
 let games = [];
 
 // shift+ctrl+V to paste
-const steamID = await input('Enter your Steam ID: ')
+let steamID = prompt("Enter SteamID", "");
 
 for (let index = 0; index < 1; index++) {
     
